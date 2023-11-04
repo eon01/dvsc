@@ -24,6 +24,13 @@ To use dvsc, simply run:
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes/:/var/lib/docker/volumes/ eon01/dvsc:latest
 ```
 
+Output:
+
+```bash
+[..]
+Total size of all dangling volumes in KB: 4355092 KB
+```
+
 ## How it Works
 
 dvsc accesses the Docker API through the Docker socket, lists all dangling volumes, calculates their sizes, and outputs the total size of all dangling volumes.
