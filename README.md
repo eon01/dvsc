@@ -21,7 +21,7 @@ You don't need to install anything on your host other than Docker. The tool runs
 To use dvsc, simply run:
 
 ```bash
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock eon01/dvsc:latest
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes/:/var/lib/docker/volumes/ eon01/dvsc:latest
 ```
 
 ## How it Works
