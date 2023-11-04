@@ -7,8 +7,8 @@ for volume in $(docker volume ls -qf dangling=true); do
     # Get the mountpoint of the volume
     mountpoint=$(docker volume inspect $volume --format '{{ .Mountpoint }}')
     # Calculate the size of the volume using du
-    size_with_unit=$(sudo du -sh $mountpoint | cut -f1)
-    size=${size_with_unit%[KMG]*}
+    size_with_unit=$(du -sh $mountpoint | cut -f1)
+    size=$(echo $size_with_unit | awk '{print int($1)}')
     unit=${size_with_unit: -1}
 
     echo "Volume: $volume Size: $size_with_unit"
@@ -31,3 +31,4 @@ for volume in $(docker volume ls -qf dangling=true); do
 done
 
 echo "Total size of all dangling volumes in KB: $total_size KB"
+
